@@ -1,0 +1,98 @@
+
+<div>
+    <h1>sales channels</h1>
+    <table>
+        <thead>
+            <th>
+                channel code
+            </th>       
+            <th>
+                channel name
+            </th>       
+        </thead>
+        <tbody>
+            {% for channel in sales_channels %}
+            <tr>
+                <td>
+                    {{channel.code}}
+                </td>
+                <td>
+                    {{channel.name}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+<div>
+    <h1>customers</h1>
+    <table>
+        <thead>
+            <th>
+                customer code
+            </th>       
+            <th>
+                customer name
+            </th>       
+            <th>
+                sales channel member
+            </th>       
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>
+                    {{customer.code}}
+                </td>
+                <td>
+                    {{customer.name}}
+                </td>
+                <td>
+                    {{customer.belongs_to_sales_channel}}
+                </td>
+                <td>
+                    {{customer.portfolio.count}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div>
+    <h1>Products</h1>
+    <table>
+        <thead>
+            <th>
+                product group
+            </th>       
+            <th>
+                product subgroup
+            </th>       
+            <th>
+                item code
+            </th>       
+            <th>
+                item name
+            </th>       
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>
+                    {{product.product_group}}
+                </td>
+                <td>
+                    {{product.product_subgroup}}
+                </td>
+                <td>
+                    {{product.code}}
+                </td>
+                <td>
+                    {{product.name}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,23 @@
+<form method="POST" action="">
+    {% csrf_token %}
+    {{formset.management_form}}
+    <table border="1px solid black">
+        <thead>
+            <th>Customer</th>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Quantity</th>
+        </thead>
+        <tbody>
+            {% for form in formset %}
+                <tr>
+                    {% for field in form %}
+                        <td>{{field}}</td>
+                    {% endfor %}  
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <input type="submit" value="Submit">
+    <button type="submit">SAVE</button>
+</form>
