@@ -1,0 +1,38 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div>
+    {{group_sales|safe}}
+</div>
+
+<div>
+    <table class="table-sm">
+        <thead>
+            <td>
+                Product Group
+            </td>
+            <td>
+                Item
+            </td>
+            <td>
+                Quantity
+            </td>
+        </thead>
+        {% for item in customer_history %}
+        <tr>
+            <td>
+            {{item.product.product_group}}
+        </td>
+        <td>
+            {{item.product}} 
+        </td>
+        <td>
+            {{item.quantity}}
+        </td>
+        {% endfor %}
+    </tr>
+    </table>
+   
+</div>
+{% endblock content %}

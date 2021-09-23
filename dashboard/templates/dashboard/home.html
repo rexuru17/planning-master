@@ -1,7 +1,9 @@
+{% extends 'dashboard/base.html' %}
 
+{% block content %}
 <div>
     <h1>sales channels</h1>
-    <table>
+    <table class="table">
         <thead>
             <th>
                 channel code
@@ -27,7 +29,7 @@
 </div>
 <div>
     <h1>customers</h1>
-    <table>
+    <table class="table">
         <thead>
             <th>
                 customer code
@@ -43,7 +45,7 @@
             {% for customer in customers %}
             <tr>
                 <td>
-                    {{customer.code}}
+                    <a href="{% url 'sales:customer-detail' pk=customer.code %}">{{customer.code}}</a>
                 </td>
                 <td>
                     {{customer.name}}
@@ -61,7 +63,7 @@
 </div>
 <div>
     <h1>Products</h1>
-    <table>
+    <table class="table">
         <thead>
             <th>
                 product group
@@ -86,7 +88,7 @@
                     {{product.product_subgroup}}
                 </td>
                 <td>
-                    {{product.code}}
+                    <a href="{% url 'products:detail-product' pk=product.pk %}">{{product.code}}</a>
                 </td>
                 <td>
                     {{product.name}}
@@ -96,3 +98,5 @@
         </tbody>
     </table>
 </div>
+
+{% endblock content%}

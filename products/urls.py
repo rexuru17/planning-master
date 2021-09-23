@@ -19,6 +19,10 @@ from django.contrib.auth.views import LogoutView
 
 app_name = 'products'
 urlpatterns = [
-    path('create/', product_views.CreateProduct.as_view(), name='create-product'),
+    path('create/', product_views.ProductCreateView.as_view(), name='create-product'),
+    path('list/', product_views.ProductListView.as_view(), name='list-product'),
+    path('update/<int:pk>/', product_views.ProductUpdateView.as_view(), name='update-product'),
+    path('delete/<int:pk>/', product_views.ProductDeleteView.as_view(), name='delete-product'),
+    path('detail/<int:pk>/', product_views.ProductDetailView.as_view(), name='detail-product'),
     
 ]

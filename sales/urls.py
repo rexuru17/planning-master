@@ -1,24 +1,19 @@
-"""planning_system URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.urls import path
 from . import views as sales_views
 from .models import *
 
 app_name = 'sales'
 urlpatterns = [
-    path('create/<str:pk>/', sales_views.create_sales_plan),
-    
+    path('customer/new/', sales_views.CustomerCreateView.as_view(), name="customer-create"),
+    path('customer/list/', sales_views.CustomerListView.as_view(), name="customer-list"),
+    path('customer/update/<int:pk>/', sales_views.CustomerUpdateView.as_view(), name="customer-update"),
+    path('customer/detail/<int:pk>/', sales_views.CustomerDetailView.as_view(), name="customer-detail"),
+    path('customer/delete/<int:pk>/', sales_views.CustomerDeleteView.as_view(), name="customer-delete"),
+    path('plan/new/', sales_views.create_sales_plan_redirect, name='sales-plan-create-form'),
+    path('plan/new/<str:pk>/<int:year>/<int:month>/<int:day>/', sales_views.create_sales_plan, name="sales-plan"),
+    path('plan/list/', sales_views.SalesPlanListView.as_view(), name="sales-plan-list"),
+    path('plan/detail/<int:pk>', sales_views.SalesPlanDetailView.as_view(), name="sales-plan-detail"),
+    path('plan/update/<int:pk>/', sales_views.SalesPlanUpdateView.as_view(), name="sales-plan-update"),
+    path('plan/delete/<int:pk>/', sales_views.SalesPlanDeleteView.as_view(), name="sales-plan-delete"),
+
 ]
